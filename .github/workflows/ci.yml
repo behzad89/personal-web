@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.1
+        uses: nwtgck/actions-netlify@v2
         with:
           publish-dir: './'
           deploy-message: "Deploy from GitHub Actions"
