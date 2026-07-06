@@ -13,12 +13,8 @@
 
   var stored = null;
   try { stored = localStorage.getItem("theme"); } catch (e) {}
-  if (stored === "light" || stored === "dark") {
-    root.setAttribute("data-theme", stored);
-  } else {
-    // No explicit choice: mirror the OS preference and let CSS media query drive.
-    root.removeAttribute("data-theme");
-  }
+  // Default to dark for everyone; only honour an explicit saved choice.
+  root.setAttribute("data-theme", (stored === "light" || stored === "dark") ? stored : "dark");
 
   function currentTheme() {
     var attr = root.getAttribute("data-theme");
