@@ -104,6 +104,9 @@
         Object.keys(linkFor).forEach(function (key) {
           linkFor[key].classList.toggle("active", key === id);
         });
+        // Reveal the hero-only sections (Projects/Contact) in the nav once we
+        // scroll past the hero; hide them again back at the top.
+        if (navLinks) navLinks.classList.toggle("revealed", id !== "hero");
       });
     }, { rootMargin: "-45% 0px -50% 0px" });
     sections.forEach(function (s) { spy.observe(s); });

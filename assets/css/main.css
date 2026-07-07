@@ -315,6 +315,26 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav-links a.nav-external { display: inline-flex; align-items: center; gap: 0.28rem; }
 .nav-links a.nav-external svg { width: 13px; height: 13px; opacity: 0.75; }
 
+/* Projects/Contact aren't linked from the hero, so they stay hidden at the top
+   and slide into the nav once you scroll past the hero (JS toggles .revealed). */
+.nav-links a.nav-reveal {
+  opacity: 0;
+  max-width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease), max-width var(--dur) var(--ease), padding var(--dur) var(--ease);
+}
+.nav-links.revealed a.nav-reveal {
+  opacity: 1;
+  max-width: 8rem;
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+  pointer-events: auto;
+}
+
 .nav-actions { display: flex; align-items: center; gap: var(--space-2); }
 
 .icon-btn {
@@ -363,6 +383,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   }
   .nav-links.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
   .nav-links a { padding: 0.9rem 0.5rem; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+  .nav-links a.nav-reveal { display: none; }
+  .nav-links.revealed a.nav-reveal { display: block; opacity: 1; max-width: none; padding: 0.9rem 0.5rem; pointer-events: auto; }
   .nav-toggle { display: inline-flex; }
 }
 
